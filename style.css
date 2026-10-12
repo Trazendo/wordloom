@@ -1,0 +1,243 @@
+/* =========================================
+   1. VARIÁVEIS E CONFIGURAÇÕES TÉCNICAS
+   ========================================= */
+:root {
+  --cor-fundo: #F9F7F2;
+  --cor-texto: #2c2c2c;
+  --cor-footer: gray;
+  --cor-links: #333;
+  --cor-hover: #0077cc;
+  --fonte-principal: 'Inter', sans-serif;
+  --largura-maxima: 800px;
+}
+
+/* RESET GLOBAL: remove espaços padrão do navegador e melhora o cálculo de tamanho */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* =========================================
+   2. CONFIGURAÇÃO GERAL DO SITE (BASE)
+   ========================================= */
+body {
+  font-family: var(--fonte-principal);
+  font-size: 16px;            /* tamanho base do texto */
+  line-height: 1.5;           /* espaço entre linhas (melhora leitura) */
+  color: var(--cor-texto);    /* cor do texto (cinza escuro) */
+  background-color: var(--cor-fundo); /* cor de fundo (cinza claro) */
+}
+
+/* Configuração Geral de Parágrafos */
+p {
+  text-align: justify;
+  text-justify: inter-word;
+  text-indent: 2em;           /* tab no paragrafo */
+  margin-top: 0;              /* remove o espaço entre parágrafos para parecer um livro */
+  margin-bottom: 10px;        /* espaço abaixo de cada parágrafo */
+}
+
+/* Títulos */
+h1, h2 {
+  margin-bottom: 16px;        /* separa título do conteúdo abaixo */
+}
+
+h2 {
+  text-align: center;         /* Paragrafos centralizados */
+}
+
+/* =========================================
+   3. ESTRUTURA E LAYOUT (CONTAINERS)
+   ========================================= */
+
+/* CENTRALIZA E ORGANIZA AS ÁREAS PRINCIPAIS */
+header, main, footer {
+  max-width: var(--largura-maxima);
+  margin: auto;               /* centraliza na tela */
+  padding: 20px;              /* espaço interno */
+  border-bottom: 1px solid #eee;
+}
+
+/* Estilo para alinhar Título e Nav lado a lado no Header */
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;            /* evita quebra em telas muito pequenas */
+}
+
+/* Remove a margem do h1 no header para não quebrar o alinhamento do flex */
+header h1 {
+  margin-bottom: 0;
+}
+
+fieldset {
+  min-width: 0;
+  border: none;
+  display: flex;            /* Ativa o modo flexbox */
+  flex-direction: column;   /* Alinha os itens em coluna para o texto e a folha... */
+  align-items: center;      /* ...e centraliza tudo que for filho direto */
+  padding-bottom: 50px;
+}
+
+.meta {
+  border: none;
+  display: flex;            /* Ativa o modo flexbox */
+  flex-direction: column;   /* Alinha os itens em coluna para o texto e a folha... */
+  align-items: center;      /* ...e centraliza tudo que for filho direto */
+}
+
+/* Criamos uma "caixa" invisível só para os botões ficarem juntos */
+.botoes-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;  /* Centraliza horizontalmente */
+  gap: 15px;                /* Cria o espaço entre os botões sem precisar de margin */
+  margin-top: 20px;
+  width: 100%;
+}
+
+/* =========================================
+   4. COMPONENTES (LINKS E BOTÕES)
+   ========================================= */
+
+/* LINKS DO MENU DE NAVEGAÇÃO */
+nav a {
+  text-decoration: none;      /* remove sublinhado */
+  color: var(--cor-links);    /* cor padrão */
+  margin-left: 0 10px;          /* espaço entre links */
+}
+/* EFEITO AO PASSAR O MOUSE NOS LINKS */
+nav a:hover {
+  color: var(--cor-hover);    /* muda a cor ao passar o mouse */
+}
+
+#baixar, #apagar, #salvarMeta, #reset ,#zoom-select{
+  height: 40px;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  background-color: #fff;
+  font-family: var(--fonte-principal);
+  font-size: 14px;
+  cursor: pointer;
+  margin-top: 0px;
+  transition: all 0.3s ease;
+  transition: background 0.3s; /* Deixa a mudança de cor suave */
+  }
+
+  /* Efeito de destaque ao passar o mouse */
+#baixar:hover, #apagar:hover, #salvarMeta:hover ,#zoom-select:hover {
+    background-color: #f0f0f0;
+    border-color: #999;
+}
+
+#apagar {
+    background-color: #fff;
+    border-color: #f5c6cb;
+}
+
+#apagar:hover {
+    background-color: #db594b;
+}
+
+#reset:hover {
+  background-color: #db594b;
+}
+
+/* =========================================
+   5. ÁREA DE ESCRITA (PÁGINA INDEX)
+   ========================================= */
+
+#editor-viewport {
+  width: 100%;
+  min-width: 0;
+  overflow: auto;
+  padding: 12px 12px 20px;
+}
+
+/* Reserva no layout o tamanho real da folha depois de aplicar o zoom. */
+#editor-espaco {
+  margin-inline: auto;
+}
+
+#texto {
+  width: var(--largura-folha, 100%);
+  min-height: 29.7cm;         /* Altura proporcional ao A4 */
+  background-color: #fff;     /* Papel branco */
+  
+  /* REMOVENDO BORDAS */
+  border: none;               /* Remove a borda cinza */
+  outline: none;              /* Remove a linha azul ao clicar */
+  
+  /* ESTILO DE FOLHA */
+  padding: 2.5cm;             /* Margens internas como de um documento real */
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Sombra suave para parecer papel */
+  
+  /* TIPOGRAFIA */
+  font-family: Georgia, serif;
+  font-size: 18px;
+  line-height: 1.6;
+  text-align: justify;
+  text-indent: 0;             /* A primeira linha da folha não tem tab automático */
+  
+  transform-origin: top left;
+
+    
+}
+
+.btn-estilizado {
+    appearance: none; /* Remove o estilo padrão do Windows/Mac */
+    background-image: url('data:image/svg+xml;charset=US-ASCII,<svg%20xmlns%3D"http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg"%20width%3D"292.4"%20height%3D"292.4"><path%20fill%3D"%232c2c2c"%20d%3D"M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-12.9%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2012.9l128%20127.9c3.6%203.6%207.8%205.4%2012.8%205.4s9.2-1.8%2012.8-5.4L287%2095c3.5-3.5%205.4-7.8%205.4-12.8%200-5-1.9-9.2-5.5-12.8z"%2F><%2Fsvg>');
+    background-repeat: no-repeat;
+    background-position: right 10px top 50%;
+    background-size: 10px auto;
+    padding-right: 30px !important; /* Espaço para a setinha */
+}
+
+/* Quando você clica na folha, a sombra aumenta um pouco */
+#texto:focus {
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.15);
+}
+
+/* Estilo para contadores e avisos na index */
+#contador, #progresso, .progresso {
+  text-indent: 0;
+  font-size: 14px;
+  color: var(--cor-footer);
+  margin-top: 5px;
+}
+
+/* =========================================
+   6. RODAPÉ (FOOTER)
+   ========================================= */
+
+/* ESTILO ESPECÍFICO PARA TEXTO DO FOOTER */
+.footer {
+  font-size: 14px;            /* texto menor */
+  color: var(--cor-footer);   /* cor mais suave */
+  text-indent: 0;             /* remove o tab global */
+  margin-top: 0;
+  text-align: center;
+}
+
+/* =========================================
+   7. RESPONSIVIDADE (MOBILE)
+   ========================================= */
+
+@media (max-width: 600px) {
+  #texto {
+    padding: 24px;
+  }
+
+  body {
+    font-size: 14px;          /* diminui o tamanho do texto em telas pequenas */
+  }
+  
+  header {
+    flex-direction: column;   /* empilha h1 e nav no celular */
+    text-align: center;
+  }
+}
